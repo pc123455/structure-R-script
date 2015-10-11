@@ -1,5 +1,5 @@
 library(R.matlab)
-setwd("C:\\Users\\xwy\\Desktop\\struction detection")
+setwd("F:\\struction detection")
 
 path<-getwd()
 
