@@ -50,3 +50,17 @@ means_feature<-function(features){
   return(means)
 }
 
+#return: nomalized features
+#input: music features
+nomalizing_feature<-function(features){
+  nomalization_feature<-list()
+  for(i in 1:length(features)){
+    cur_feature<-features[[i]]
+    mean_feature<-mean(cur_feature)
+    sd_feature<-sd(cur_feature)
+    cur_feature<-(cur_feature-mean_feature)/sd_feature
+    nomalization_feature[[i]]<-cur_feature
+  }
+  return(nomalization_feature)
+}
+
