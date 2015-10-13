@@ -6,7 +6,7 @@ get_music_boundary_indices<-function(music_length,boundaries,features){
   for(i in 1:length(music_length)){
     boundary<-as.vector(unlist(boundaries[[i]]))
     index<-boundary/music_length[[i]]
-    index<-c(index[],1)
+    #index<-c(index[],1)
     index<-index*ncol(features[[i]])
     index<-round(index)
     indices[[i]]<-index

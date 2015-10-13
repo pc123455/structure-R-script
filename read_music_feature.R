@@ -14,6 +14,12 @@ plp_features<-readMat(file.path(path,"plp_features_just_plp_v7.mat"))
 music.length<-readMat(file.path(path,"music_length.mat"))
 music.length<-music.length[[1]]
 
+for(i in 1:length(music.boundary.time)){
+  cur_boundary_time<-music.boundary.time[[i]][[1]]
+  cur_boundary_time[[length(cur_boundary_time)+1]]<-music.length[i]
+  music.boundary.time[[i]]<-cur_boundary_time
+}
+
 music.feature.plp<-list()
 music.feature.spec<-list()
 
