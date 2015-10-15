@@ -15,5 +15,8 @@ for(i in 1:length(music.feature.plp.pca[[1]])){
 accuracy_list<-evaluating_accuracy(music.boundary.detected.label,music.boundary.time,music.boundary.ground.time,music.boundary.ground.label.seq)
 
 cat("mean accuracy:",mean(accuracy_list))
+
+boxplot(accuracy_list)
 #km.out<-kmeans(music.feature.plp.pca[[1]][[1]][,1:2],5,nstart = 20)
 #plot(music.feature.plp.pca[[1]][[1]][,1:2],col=(km.out$cluster+1),main="K-Means Clustering Result with K=2",xlab = "",ylab = "",pch=20,cex=2)
+hist(accuracy_list)

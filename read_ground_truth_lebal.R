@@ -24,6 +24,100 @@ for(i in 1:length(music.boundary.ground.label)){
   music.boundary.ground.label[[i]]<-new_label
 }
 
+#replace the label
+music.boundary.ground.label.replace<-list()
+for(i in 1:length(music.boundary.ground.label)){
+  cur_label<-music.boundary.ground.label[[i]]
+  for(j in 1:length(cur_label)){
+    label_str<-tolower(cur_label[[j]])
+    label_str<-tolower(label_str)
+    
+    #verse
+    if(length(grep("mr",label_str))!=0){
+      label_str<-"verse"
+    }else if(length(grep("verse",label_str))!=0){
+      label_str<-"verse"
+    }else if(length(grep("ver_se",label_str))!=0){
+      label_str<-"verse"
+    }
+    #instrument
+    else if(length(grep("verses",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("verseas",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("versehs",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("versebs",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("solo",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("long_connector",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("short_connector",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("instrumental",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("refrains",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("guitars",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("break",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("bridgebs",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("bridges",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("bridgeas",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("closing",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("close",label_str))!=0){
+      label_str<-"instrument"
+    }else if(length(grep("interlude",label_str))!=0){
+      label_str<-"instrument"
+    }
+    #refrain
+    else if(length(grep("refrain",label_str))!=0){
+      label_str<-"refrain"
+    }
+    #bridge
+    else if(length(grep("bridge",label_str))!=0){
+      label_str<-"bridge"
+    }
+    #intro
+    else if(length(grep("intro",label_str))!=0){
+      label_str<-"intro"
+    }
+    #outro
+    else if(length(grep("outro",label_str))!=0){
+      label_str<-"outro"
+    }
+    #silence
+    else if(length(grep("si",label_str))!=0){
+      label_str<-"silence"
+    }
+    #impro
+    else if(length(grep("impro",label_str))!=0){
+      label_str<-"verse"
+    }
+    
+    cur_label[[j]]<-label_str
+  }
+  music.boundary.ground.label.replace[[i]]<-cur_label
+}
+
+
+
+all_label<-""
+for(i in 1:length(music.boundary.ground.label.replace)){
+  cur_label<-music.boundary.ground.label.replace[[i]]
+  for(j in 1:length(cur_label)){
+    if(length(grep(cur_label[[j]],all_label))==0){
+      all_label<-paste(all_label," ",cur_label[[j]])
+    }
+  }
+}
+
 #ground truth type
 music.boundary.ground.label.seq<-list()
 music.boundary.ground.label.count<-c()
