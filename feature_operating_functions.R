@@ -42,7 +42,12 @@ means_feature<-function(features){
     #means of the feature of single music
     single_means<-c()
     for(j in 1:length(cur_feature)){
-      single_means<-c(single_means[],rowMeans(cur_feature[[j]]))
+      #cat("i=",i," j= ",j,"\n")
+      if(class(cur_feature[[j]])!="matrix"){
+        single_means<-c(single_means[],cur_feature[[j]])
+      }else{
+        single_means<-c(single_means[],rowMeans(cur_feature[[j]]))
+      }
     }
     single_means_matix<-matrix(single_means,ncol = length(cur_feature))
     means[[i]]<-t(single_means_matix)
