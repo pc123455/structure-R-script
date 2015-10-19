@@ -61,9 +61,15 @@ nomalizing_feature<-function(features){
   nomalization_feature<-list()
   for(i in 1:length(features)){
     cur_feature<-features[[i]]
-    mean_feature<-mean(cur_feature)
-    sd_feature<-sd(cur_feature)
-    cur_feature<-(cur_feature-mean_feature)/sd_feature
+    for(j in 1:ncol(cur_feature)){
+      cur_col<-cur_feature[,j]
+      cat(str(cur_col),"\n")
+      mean_feature<-mean(cur_col)
+      sd_feature<-sd(cur_col)
+      cur_col<-(cur_col-mean_feature)/sd_feature
+      cat(str(cur_col),"\n")
+      cur_feature[,j]<-cur_col
+    }
     nomalization_feature[[i]]<-cur_feature
   }
   return(nomalization_feature)
