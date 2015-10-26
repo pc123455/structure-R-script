@@ -32,8 +32,14 @@ for i=1:length(features)
        cur_row=cur_feature(j,:);
        cur_feature(j,:)=(cur_row-feature_mean(j))/feature_std(j);
    end
+
+%    cur_feature = features{i,1};
+%    cur_feature = 8./(1+exp(-0.3*cur_feature));
+   %cur_feature = round(cur_feature);
    features_nomal{i,1}=cur_feature;
 end
+
+
 
 %% 计算各个边界区间的特征均值
 %分离各个片段的特征
@@ -61,6 +67,12 @@ for i=1:length(separate_feature)
        mean_feature{i,1}(:,j)=mean(cur_featrue{j,1},2);
     end
 end
+
+% %主成分提取
+% for i=1:length(mean_feature)
+%     %对特征进行PCA计算
+%     [coef,score] = pca(mean_feature{i,1}');
+% end
 
 end
 
